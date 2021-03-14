@@ -12,7 +12,7 @@ from forms import CreatePostForm, LoginForm, RegisterForm, CommentForm
 from functools import wraps
 from dotenv import load_dotenv
 import os
-load_dotenv()
+load_dotenv(".env.txt")
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.getenv("FLASK_SECRET_KEY")
@@ -21,7 +21,7 @@ Bootstrap(app)
 gravatar = Gravatar(app, size=70, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
 
 # Database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["DATABASE_URL"]
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
