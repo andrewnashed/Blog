@@ -8,7 +8,7 @@ to_email = os.getenv("TO_EMAIL")
 
 
 def send_email(name, email, phone, message):
-    with smtplib.SMTP("smtp.gmail.com") as connection:
+    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
         connection.starttls()
         connection.login(user=my_email, password=password)
         connection.sendmail(from_addr=my_email,
